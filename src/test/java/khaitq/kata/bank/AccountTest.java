@@ -35,6 +35,17 @@ public class AccountTest {
 		assertTrue(this.account.getBalance().equals(new BigDecimal(-200)));
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void make_a_illegal_deposit_test() {
+		BigDecimal amount = new BigDecimal(-200);
+		this.account.deposit(amount);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void make_a_illegal_withdraw_test() {
+		this.account.withdraw(null);
+	}
+	
 	@Test
 	public void print_all_history_test() {
 		this.account.deposit(new BigDecimal(100));

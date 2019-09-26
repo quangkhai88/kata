@@ -20,10 +20,17 @@ public class Account {
 	}
 	
 	public void deposit(BigDecimal amount) {
+		checkAmount(amount);
 		addToAccount(amount);
 	}
 	
+	private void checkAmount(BigDecimal amount) {
+		if (amount == null || amount.longValue() < 0) 
+			throw new IllegalArgumentException("Amount must greater than zero");
+	}
+
 	public void withdraw(BigDecimal amount) {
+		checkAmount(amount);
 		amount = new BigDecimal(0).subtract(amount);
 		addToAccount(amount);
 	}
